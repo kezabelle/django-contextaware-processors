@@ -10,6 +10,19 @@ __all__ = ['AlreadyRendered', 'ContextawareTemplateResponse']
 class AlreadyRendered(TypeError): pass
 
 
+def update_context_from_callbacks(request, context, callbacks):
+    for context_callback in callbacks:
+        newcontext = context_callback(request=request, context=context)
+        # if a callback marks itself as irrelevant, skip to the
+        # next processor in the list.
+        if newcontext is NotImplemented:
+            continue
+        if newcontext is not None:
+            context.update(newcontext)
+    return context
+
+
+
 class ContextawareTemplateResponse(TemplateResponse):
     rendering_attrs = TemplateResponse.rendering_attrs + ['_post_context_callbacks']
 
@@ -27,14 +40,11 @@ class ContextawareTemplateResponse(TemplateResponse):
                                   "without having to re-render it")
         self._post_context_callbacks.append(callback)
 
+    def update_context_from_callbacks(context):
+        return update_context_from_callbacks(request=self._request, context=context,
+                                             callbacks=self._post_context_callbacks)
+
     def resolve_context(self, context):
-        retval = super(ContextawareTemplateResponse, self).resolve_context(context=context)
-        for context_callback in self._post_context_callbacks:
-            newretval = context_callback(request=self._request, context=retval)
-            # if a callback marks itself as irrelevant, skip to the
-            # next processor in the list.
-            if newretval is NotImplemented:
-                continue
-            if newretval is not None:
-                retval.update(newretval)
-        return retval
+        ctx = super(ContextawareTemplateResponse, self).resolve_context(context=context)
+        ctx = self.update_context_from_callbacks(context=ctx)
+        return ctx
