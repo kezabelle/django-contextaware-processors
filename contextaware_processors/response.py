@@ -40,7 +40,7 @@ class ContextawareTemplateResponse(TemplateResponse):
                                   "without having to re-render it")
         self._post_context_callbacks.append(callback)
 
-    def update_context_from_callbacks(context):
+    def update_context_from_callbacks(self, context):
         return update_context_from_callbacks(request=self._request, context=context,
                                              callbacks=self._post_context_callbacks)
 
