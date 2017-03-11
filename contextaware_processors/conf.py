@@ -4,7 +4,7 @@ from django.conf import settings
 from django.utils.functional import SimpleLazyObject as LazyObj
 from django.utils.module_loading import import_string
 import django
-if django.VERSION[0:2] < (1, 9):
+if django.VERSION[0:2] < (1, 9): #pragma: no cover
     from django.utils.functional import new_method_proxy
     class SimpleLazyObject(LazyObj):
         __iter__ = new_method_proxy(iter)

@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 try:
     from django.utils.deprecation import MiddlewareMixin
-except ImportError:  # < Django 1.10
+except ImportError:  # pragma: no cover ... < Django 1.10
     class MiddlewareMixin(object):
         pass
 from .conf import callback_registry
