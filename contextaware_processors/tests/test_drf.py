@@ -2,8 +2,10 @@
 from __future__ import absolute_import, unicode_literals
 import pytest
 from django.contrib.auth import get_user_model
-from django.urls import resolve
-from django.urls import reverse
+try:
+    from django.urls import resolve, reverse
+except ImportError:
+    from django.core.urlresolvers import resolve, reverse
 from pytest_django.lazy_django import skip_if_no_django
 
 from contextaware_processors.middleware import ContextawareProcessors
