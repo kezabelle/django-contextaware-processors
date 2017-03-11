@@ -4,11 +4,11 @@ django-contextaware_processors
 :author: Keryn Knight
 :version: 0.1.0
 
-.. |travis_stable| image:: https://travis-ci.org/kezabelle/django-contextaware_processors.svg?branch=0.1.0
-  :target: https://travis-ci.org/kezabelle/django-contextaware_processors
+.. |travis_stable| image:: https://travis-ci.org/kezabelle/django-contextaware-processors.svg?branch=0.1.0
+  :target: https://travis-ci.org/kezabelle/django-contextaware-processors
 
-.. |travis_master| image:: https://travis-ci.org/kezabelle/django-contextaware_processors.svg?branch=master
-  :target: https://travis-ci.org/kezabelle/django-contextaware_processors
+.. |travis_master| image:: https://travis-ci.org/kezabelle/django-contextaware-processors.svg?branch=master
+  :target: https://travis-ci.org/kezabelle/django-contextaware-processors
 
 ==============  ======
 Release         Status
