@@ -59,6 +59,10 @@ TEMPLATES = [
         },
     },
 ]
+CONTEXTAWARE_PROCESSORS = (
+    'contextaware_processors.tests.test_middleware.via_settings_1',
+    'contextaware_processors.tests.test_middleware.via_settings_2',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

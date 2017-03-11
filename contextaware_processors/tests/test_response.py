@@ -4,8 +4,10 @@ from __future__ import absolute_import, unicode_literals
 from contextlib import contextmanager
 
 import pytest
+from django.utils.encoding import force_text
 
-from contextaware_processors.response import ContextawareTemplateResponse
+from contextaware_processors.response import ContextawareTemplateResponse, \
+    AlreadyRendered
 
 
 def _ctx_processor_1(request, context):
@@ -51,3 +53,16 @@ def test_contextaware_templateresponse(rf, callbacks, context_data):
     with render(response):
         assert response.context_data == context_data
     assert response.context_data == {}
+
+
+
+def test_contextaware_templateresponse_error_if_rendered(rf):
+    request = rf.get('/')
+    response = ContextawareTemplateResponse(request=request, context={},
+                                            template="admin/base.html")
+    response.render()
+    with pytest.raises(AlreadyRendered) as exc:
+        response.add_context_callback(_ctx_processor_1)
+    error_message = "Cannot apply a new context-mutating callback after " \
+                    "rendering the content, without having to re-render it"
+    assert error_message in force_text(exc.value)

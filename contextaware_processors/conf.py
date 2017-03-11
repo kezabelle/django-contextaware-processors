@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
+from django.conf import settings
+from django.utils.functional import SimpleLazyObject
+from django.utils.module_loading import import_string
 
 __all__ = ['CallbackRegistry', 'callback_registry']
 
@@ -15,7 +18,8 @@ class CallbackRegistry(object):
 
     def register(self, callback):
         if callback in self.callback_paths:
-            raise ValueEror("")
+            raise ValueError("'{0!s}' is already in this callback "
+                             "registry".format(callback))
         self.callback_paths.append(callback)
         _callback = import_string(callback)
         self.callbacks.append(_callback)
@@ -23,4 +27,4 @@ class CallbackRegistry(object):
     def __iter__(self):
         return iter(self.callbacks)
 
-callback_registry = CallbackRegistry()
+callback_registry = SimpleLazyObject(CallbackRegistry)
