@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from django.conf import settings
-from django.utils.functional import SimpleLazyObject
+from django.utils.functional import SimpleLazyObject as LazyObj
 from django.utils.module_loading import import_string
+import django
+if django.VERSION[0:2] < (1, 9):
+    from django.utils.functional import new_method_proxy
+    class SimpleLazyObject(LazyObj):
+        __iter__ = new_method_proxy(iter)
+else:
+    SimpleLazyObject = LazyObj
 
 __all__ = ['CallbackRegistry', 'callback_registry']
 
