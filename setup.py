@@ -68,6 +68,7 @@ setup(
         "pytest-cov>=1.8",
         "pytest-remove-stale-bytecode>=1.0",
         "pytest-catchlog>=1.2",
+        "djangorestframework",
     ],
     cmdclass={"test": PyTest},
     zip_safe=False,
