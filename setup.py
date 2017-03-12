@@ -38,21 +38,23 @@ def make_readme(root_path):
                 yield f.read()
 
 LICENSE = "BSD License"
-URL = ""
+URL = "https://www.github.com/kezabelle/django-contextaware-processors/"
 LONG_DESCRIPTION = "\r\n\r\n----\r\n\r\n".join(make_readme(HERE))
-SHORT_DESCRIPTION = ""
+SHORT_DESCRIPTION = "Before a Django TemplateResponse is rendered, modify the context data in-place with context-processor like functionality "
 KEYWORDS = (
     "django",
     "contextaware_processors",
+    "template",
+    "context",
 )
 
 setup(
-    name="django-contextaware_processors",
+    name="django-contextaware-processors",
     version="0.1.0",
     author="Keryn Knight",
-    author_email="django-contextaware_processors@kerynknight.com",
+    author_email="django-contextaware-processors@kerynknight.com",
     maintainer="Keryn Knight",
-    maintainer_email="django-contextaware_processors@kerynknight.com",
+    maintainer_email="django-contextaware-processors@kerynknight.com",
     description=SHORT_DESCRIPTION[0:200],
     long_description=LONG_DESCRIPTION,
     packages=[
