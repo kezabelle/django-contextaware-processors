@@ -2,9 +2,9 @@ django-contextaware-processors
 ==============================
 
 :author: Keryn Knight
-:version: 0.1.0
+:version: 0.1.1
 
-.. |travis_stable| image:: https://travis-ci.org/kezabelle/django-contextaware-processors.svg?branch=0.1.0
+.. |travis_stable| image:: https://travis-ci.org/kezabelle/django-contextaware-processors.svg?branch=0.1.1
   :target: https://travis-ci.org/kezabelle/django-contextaware-processors
 
 .. |travis_master| image:: https://travis-ci.org/kezabelle/django-contextaware-processors.svg?branch=master
@@ -13,7 +13,7 @@ django-contextaware-processors
 ==============  ======
 Release         Status
 ==============  ======
-stable (0.1.0)  |travis_stable|
+stable (0.1.1)  |travis_stable|
 master          |travis_master|
 ==============  ======
 
@@ -32,9 +32,9 @@ long as you're using `TemplateResponse`_ objects and not ``render()`` or
 Installation
 ------------
 
-You can use `pip`_ to install the ``0.1.0`` version from `PyPI`_::
+You can use `pip`_ to install the ``0.1.1`` version from `PyPI`_::
 
-    pip install django-contextaware-processors==0.1.0
+    pip install django-contextaware-processors==0.1.1
 
 Or you can grab it from  `GitHub`_  like this::
 

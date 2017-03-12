@@ -50,7 +50,7 @@ KEYWORDS = (
 
 setup(
     name="django-contextaware-processors",
-    version="0.1.0",
+    version="0.1.1",
     author="Keryn Knight",
     author_email="django-contextaware-processors@kerynknight.com",
     maintainer="Keryn Knight",
